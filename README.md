@@ -1,4 +1,4 @@
-Sudoku solver using backtracking alghoritm.
+Sudoku solver using backtracking algorithm.
 
 Text version in text_sudoku_solver.py. 
 Run sudoku_solver_gui.py for graphic version.
