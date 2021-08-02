@@ -1,13 +1,11 @@
 import pygame as pg
 from constants import WIDTH, HEIGH, FPS
 from board import Board
+import sample_boards
+import simple_sudoku_solver
 
 
 pg.init()
-
-# class Board:
-#     def __init__(self):
-
 
 
 def main():
@@ -17,18 +15,11 @@ def main():
     run = True
     clock = pg.time.Clock()
 
-    bd = [[3, 0, 6, 5, 0, 8, 4, 0, 0],
-             [5, 2, 0, 0, 0, 0, 0, 0, 0],
-             [0, 8, 7, 0, 0, 0, 0, 3, 1],
-             [0, 0, 3, 0, 1, 0, 0, 8, 0],
-             [9, 0, 0, 8, 6, 3, 0, 0, 5],
-             [0, 5, 0, 0, 9, 0, 6, 0, 0],
-             [1, 3, 0, 0, 0, 0, 2, 5, 0],
-             [0, 0, 0, 0, 0, 0, 0, 7, 4],
-             [0, 0, 5, 2, 0, 6, 3, 0, 0]]
+    bd = sample_boards.board2
 
     board = Board(bd)
 
+    solved = False
 
     while run:
         clock.tick(FPS)
@@ -38,7 +29,10 @@ def main():
                 run = False
             if event.type == pg.MOUSEBUTTONDOWN:
                 pass
-        board.draw_cubes(win)
+        # board.draw_cubes(win)
+        while not solved:
+            solved = board.solve(win)
+        # board.display_numbers(win)
         pg.display.update()
 
     pg.quit()
