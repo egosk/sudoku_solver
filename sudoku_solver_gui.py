@@ -2,8 +2,7 @@ import pygame as pg
 from constants import WIDTH, HEIGH, FPS
 from board import Board
 import sample_boards
-import simple_sudoku_solver
-
+import pyautogui
 
 pg.init()
 
@@ -19,22 +18,21 @@ def main():
 
     board = Board(bd)
 
-    solved = False
-
+    pyautogui.alert("Let's solve this sudoku")
     while run:
         clock.tick(FPS)
 
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 run = False
-            if event.type == pg.MOUSEBUTTONDOWN:
-                pass
-        # board.draw_cubes(win)
-        while not solved:
-            solved = board.solve(win)
-        # board.display_numbers(win)
+            # if event.type == pg.MOUSEBUTTONDOWN:
+            if board.solve(win):
+                pyautogui.alert("Sudoku is solved!")
+                run = False
+
         pg.display.update()
 
     pg.quit()
+
 
 main()

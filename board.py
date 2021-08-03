@@ -70,10 +70,10 @@ class Board:
                             self.draw_cubes(win)
                             self.display_numbers(win)
                             pg.display.update()
-                            pg.time.delay(20)
+                            pg.time.delay(30)
                             self.solve(win)
                             if self.is_solved():
-                                return
+                                return True
                             self.grid[i, j] = 0
                             self.draw_cubes(win)
                             self.display_numbers(win)
